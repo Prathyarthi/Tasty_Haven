@@ -13,7 +13,7 @@ function Menu() {
                     <Image src={"/leftSalad.png"} width={107} height={195} alt="menu image" />
                 </div>
             </div>
-            <Heading title={"Check Out"} subHeading={"MENU"} />
+            <Heading title={"CHECK OUT"} subHeading={"MENU"} />
             <div className='grid grid-cols-3 gap-4'>
                 <MenuItem img={"/meals.png"} />
                 <MenuItem img={"/meals.png"} />
