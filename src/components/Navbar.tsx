@@ -1,8 +1,19 @@
+'use client'
 import Link from "next/link"
 import Button from "./Button"
 import Image from "next/image"
+import { useRouter } from "next/navigation"
+
 
 function Navbar() {
+    const router = useRouter();
+    const handleLogin = () => {
+        router.push('/login');
+    };
+
+    const handleSignup = () => {
+        router.push('/signup');
+    };
     return (
         <div>
             <header className="flex justify-between items-center">
@@ -12,12 +23,12 @@ function Navbar() {
                     </div>
                 </Link>
                 <nav className="flex gap-4 items-center font-semibold">
-                    <Link href={"/home"}>Home</Link>
+                    <Link href={"/"}>Home</Link>
                     <Link href={"/menu"}>Menu</Link>
                     <Link href={"/about"}>About</Link>
                     <Link href={"/contact"}>Contact</Link>
-                    <Button text="Login" />
-                    <Button text="Signup" />
+                    <Button text="Login" onclick={handleLogin} />
+                    <Button text="Signup" onclick={handleSignup} />
                 </nav>
             </header>
         </div>

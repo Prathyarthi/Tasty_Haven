@@ -2,7 +2,7 @@ import React from 'react'
 
 function MenuItem({ img }: any) {
     return (
-        <div className='bg-slate-800 p-4 rounded-lg text-center m-5 group hover:bg-red-500 hover:shadow-2xl hover:shadow-white transition-all'>
+        <div className='bg-[#1b1a1a] p-4 rounded-lg text-center m-5 group hover:bg-[#9B3922] hover:shadow-2xl hover:shadow-white transition-all'>
             <div className='flex justify-center'>
                 <img className='max-h-auto max-w-auto' src={img} alt="meals" />
             </div>
