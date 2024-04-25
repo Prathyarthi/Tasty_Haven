@@ -1,6 +1,13 @@
 import mongoose, { Schema } from 'mongoose'
+import bcrypt from 'bcrypt'
 
-const userSchema = new Schema({
+interface User extends Document {
+    username: string,
+    email: string,
+    password: string
+}
+
+const userSchema: Schema<User> = new Schema({
     username: {
         type: String,
         required: true
@@ -8,7 +15,8 @@ const userSchema = new Schema({
     email: {
         type: String,
         required: true,
-        lowercase: true
+        lowercase: true,
+        unique: true
     },
     password: {
         type: String,
@@ -17,4 +25,18 @@ const userSchema = new Schema({
     }
 }, { timestamps: true })
 
-export const UserModel = mongoose.model('User', userSchema)
+userSchema.pre('save', async function (next) {
+    if (!this.isModified('password')) {
+        return next();
+    }
+    this.password = await bcrypt.hash(this.password, 10)
+    next()
+})
+
+userSchema.methods.comparePassword = async function (password: string) {
+    return await bcrypt.compare(password, this.password)
+}
+
+const UserModel = (mongoose.models.User as mongoose.Model<User>) || mongoose.model<User>("User", userSchema);
+
+export default UserModel

@@ -1,12 +1,15 @@
 "use client"
 import axios from "axios";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export const Signup = () => {
     const [username, setUsername] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+
+    const router = useRouter()
 
     const handleSubmit = async () => {
         const response = await axios.post("/api/signup", {
@@ -16,6 +19,7 @@ export const Signup = () => {
         })
 
         console.log(response);
+        router.push("/signin")
     }
 
     return <div className="flex justify-center">
