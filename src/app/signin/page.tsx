@@ -1,9 +1,10 @@
+import { Signin } from "@/components/Signin"
 
 
 function page() {
-  return (
-    <div>page</div>
-  )
+    return (
+        <Signin />
+    )
 }
 
 export default page
