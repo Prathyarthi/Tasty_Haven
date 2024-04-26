@@ -52,7 +52,7 @@ export const Signup = () => {
                     <div>
                         Already have an account?
                     </div>
-                    <Link className="pointer underline pl-1 cursor-pointer" href={"/login"}>
+                    <Link className="pointer underline pl-1 cursor-pointer" href={"/signin"}>
                         Sign in
                     </Link>
                 </div>
